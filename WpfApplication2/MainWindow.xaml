@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfApplication2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication2"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <sys:String x:Key="myString">Hello WPF!</sys:String>
+    </Window.Resources>
+    <Grid ShowGridLines="True">
+        <Border Margin="5" Padding="5" Background="LightYellow" 
+            BorderBrush="SteelBlue" BorderThickness="3,5,3,5" CornerRadius="3">
+            <StackPanel>
+                <TextBox Text="{StaticResource ResourceKey=myString}" Margin="5"/>
+                <TextBox x:Name="textBox2" Text="邢双" Margin="5"/>
+                <Button Content="Show" Click="Button_Click" Margin="5"/>
+                <Label BorderBrush="Black" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Margin="3">
+                            Image and text label
+                        </TextBlock>
+                        <TextBlock Margin="3">Courtesy of the StackPanel</TextBlock>
+                    </StackPanel>
+                </Label>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>
