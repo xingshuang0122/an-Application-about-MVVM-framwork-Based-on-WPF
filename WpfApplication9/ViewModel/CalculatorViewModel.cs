@@ -10,9 +10,9 @@ namespace WpfApplication9.ViewModel
 {
     public class CalculatorViewModel : BaseNotifyPropertyChanged
     {
-        public CalculatorViewModel( )
+        public CalculatorViewModel()
         {
-            this._calModel = new CalculatorModel( );
+            this._calModel = new CalculatorModel();
         }
 
         #region 将要绑定的数据
@@ -30,7 +30,7 @@ namespace WpfApplication9.ViewModel
             set
             {
                 this._calModel = value;
-                RaisePropertyChanged( "CalModel" );
+                RaisePropertyChanged("CalModel");
             }
         }
         #endregion
@@ -47,7 +47,7 @@ namespace WpfApplication9.ViewModel
             {
                 if (this._calculatorCommand == null)
                 {
-                    this._calculatorCommand = new MyCommand( this.ExecuteCalculate );
+                    this._calculatorCommand = new MyCommand(this.ExecuteCalculate);
                 }
                 return this._calculatorCommand;
             }
@@ -63,9 +63,37 @@ namespace WpfApplication9.ViewModel
             {
                 if (this._restartCommand == null)
                 {
-                    this._restartCommand = new MyCommand( this.ExecuteRestart );
+                    this._restartCommand = new MyCommand(this.ExecuteRestart);
                 }
                 return _restartCommand;
+            }
+        }
+
+        private MyCommand _loadedCommand;
+
+        public MyCommand LoadedCommand
+        {
+            get
+            {
+                if (this._loadedCommand == null)
+                {
+                    this._loadedCommand = new MyCommand(this.ExecuteLoaded);
+                }
+                return _loadedCommand;
+            }
+        }
+
+        private MyCommand _closingCommand;
+
+        public MyCommand ClosingCommand
+        {
+            get
+            {
+                if (this._closingCommand == null)
+                {
+                    this._closingCommand = new MyCommand(this.ExecuteClosing);
+                }
+                return _closingCommand;
             }
         }
 
@@ -75,7 +103,7 @@ namespace WpfApplication9.ViewModel
         /// <summary>
         /// 执行计算功能
         /// </summary>
-        private void ExecuteCalculate( object strParameter = null )
+        private void ExecuteCalculate(object strParameter = null)
         {
             this._calModel.Result = this._calModel.Number1 + this._calModel.Number2;
         }
@@ -84,11 +112,21 @@ namespace WpfApplication9.ViewModel
         /// <summary>
         /// 执行重置功能
         /// </summary>
-        private void ExecuteRestart( object strParameter = null )
+        private void ExecuteRestart(object strParameter = null)
         {
             this._calModel.Number1 = 0;
             this._calModel.Number2 = 0;
             this._calModel.Result = 0;
+        }
+
+        private void ExecuteLoaded(object objParameter = null)
+        {
+            //System.Windows.MessageBox.Show("载入");
+        }
+
+        private void ExecuteClosing(object objParameter = null)
+        {
+            System.Windows.MessageBox.Show("关闭中。。。。。");
         }
         #endregion
     }
